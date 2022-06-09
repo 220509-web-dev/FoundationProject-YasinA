@@ -2,7 +2,7 @@
 package dev.GGCritics.Daos;
 
 // Imports
-import dev.GGCritics.Entities.User;
+import dev.GGCritics.Model.User;
 import dev.GGCritics.Utilities.ConnectionFactoryUtility;
 import java.sql.*;
 import java.util.ArrayList;
@@ -88,6 +88,58 @@ public class UserDaoPostgres implements UserDao{
             user.setEmail(rs.getString("email"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
+            return user;
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        try(Connection conn = ConnectionFactoryUtility.getConnection()){
+            String sql = "select * from ent_ggcritics.app_user where username = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,username);
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+
+            User user = new User();
+            user.setUserId(rs.getInt("id"));
+            user.setFirstName(rs.getString("first_name"));
+            user.setLastName(rs.getString("last_name"));
+            user.setEmail(rs.getString("email"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            return user;
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return null;
+    }
+
+
+    @Override
+    public User getUserByUsernameAndPassword(String username, String password) {
+        try(Connection conn = ConnectionFactoryUtility.getConnection()){
+            String sql = "select * from ent_ggcritics.app_user where username = ? and password = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,username);
+            ps.setString(2,password);
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+
+            User user = new User();
+            user.setUserId(rs.getInt("id"));
+            user.setFirstName(rs.getString("first_name"));
+            user.setLastName(rs.getString("last_name"));
+            user.setEmail(rs.getString("email"));
+            user.setUsername(rs.getString("username"));
+//            user.setPassword(rs.getString("password"));
             return user;
 
         } catch (SQLException exception) {

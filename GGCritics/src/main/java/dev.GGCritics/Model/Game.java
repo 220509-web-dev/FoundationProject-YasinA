@@ -1,4 +1,4 @@
-package dev.GGCritics.Entities;
+package dev.GGCritics.Model;
 
 public class Game {
     private int gameId;

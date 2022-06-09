@@ -1,6 +1,6 @@
 package dev.GGCritics.Daos;
 
-import dev.GGCritics.Entities.Game;
+import dev.GGCritics.Model.Game;
 
 import java.util.List;
 

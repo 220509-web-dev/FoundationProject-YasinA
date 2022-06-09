@@ -1,5 +1,5 @@
 // Packages
-package dev.GGCritics.Entities;
+package dev.GGCritics.Model;
 
 public class User {
 

@@ -1,6 +1,6 @@
 package dev.GGCritics.Daos;
 
-import dev.GGCritics.Entities.User;
+import dev.GGCritics.Model.User;
 
 import java.util.List;
 
@@ -11,6 +11,12 @@ public interface UserDao {
 
 // Gets user by id
     User getUserById(int id);
+
+//Gets user by username
+    User getUserByUsername(String username);
+
+//Gets user by username
+    User getUserByUsernameAndPassword(String username, String password);
 
 // Query to get all users and return it as a list
     List<User> getAllUsers();
