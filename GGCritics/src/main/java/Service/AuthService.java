@@ -4,6 +4,9 @@ import dev.GGCritics.Daos.UserDaoPostgres;
 import dev.GGCritics.Model.User;
 import dtos.Credentials;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class AuthService {
 
@@ -14,15 +17,16 @@ public class AuthService {
     }
 
     public User login(Credentials credentials) {
+        User user;
 
-        // Validate that the credentials provided make sense before trying to query the DB
         if (credentials != null) {
-            return userDao.getUserByUsernameAndPassword(credentials.getUsername(), credentials.getPassword());
+            user = userDao.getUserByUsernameAndPassword(credentials.getUsername(), credentials.getPassword());
         }
-        else
-            return null;
+        else {
+            user = null;
+        }
+    return user;
     }
-
 
     public User register(User user) {
         if (user.getFirstName() != null && user.getLastName() != null && user.getEmail() != null && user.getPassword() != null) {

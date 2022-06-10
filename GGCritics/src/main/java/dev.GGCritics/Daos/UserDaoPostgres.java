@@ -139,11 +139,11 @@ public class UserDaoPostgres implements UserDao{
             user.setLastName(rs.getString("last_name"));
             user.setEmail(rs.getString("email"));
             user.setUsername(rs.getString("username"));
-//            user.setPassword(rs.getString("password"));
             return user;
 
         } catch (SQLException exception) {
             exception.printStackTrace();
+            System.out.println("No user found!");
         }
         return null;
     }

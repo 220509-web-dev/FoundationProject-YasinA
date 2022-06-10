@@ -37,8 +37,10 @@ public class AuthServlet extends HttpServlet {
             HttpSession session = req.getSession();
             session.setAttribute("auth-user", authenticatedUser);
 
-            resp.setStatus(204); // replace if needed
-
+            resp.setStatus(200);
+            resp.setContentType("application/json");
+            resp.getWriter().write(mapper.writeValueAsString(authenticatedUser));// replace if needed
+            return;
         } catch (InvalidCredentialsException e) {
             resp.setStatus(401); // UNAUTHORIZED (login failure)
         } catch (Exception e) {

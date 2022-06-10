@@ -5,12 +5,22 @@
          version="3.1">
 
     <display-name>GGCritics</display-name>
+    <filter>
+        <filter-name>CorsFilter</filter-name>
+        <filter-class>Filters.CorsFilter</filter-class>
+    </filter>
 
-<!--    <servlet>
-        <servlet-name>UserServlet</servlet-name>
-        <servlet-class>dev.GGCritics.servlets.UserServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>-->
+    <filter-mapping>
+        <filter-name>CorsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!--    <servlet>
+            <servlet-name>UserServlet</servlet-name>
+            <servlet-class>dev.GGCritics.servlets.UserServlet</servlet-class>
+            <load-on-startup>1</load-on-startup>
+        </servlet>-->
 
 <!--    <servlet-mapping>-->
 <!--        <servlet-name>UserServlet</servlet-name>-->
